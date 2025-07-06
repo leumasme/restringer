@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restringer Test</title>
+</head>
+<body>
+    <h1>Restringer Test</h1>
+    <textarea id="input" rows="10" cols="80"></textarea>
+    <br>
+    <button id="deobfuscate">Deobfuscate</button>
+    <br>
+    <textarea id="output" rows="10" cols="80" readonly></textarea>
+    <script type="module">
+        import { REstringer } from './dist/restringer.es.js';
+        document.getElementById('deobfuscate').addEventListener('click', () => {
+            const input = document.getElementById('input').value;
+            const restringer = new REstringer(input);
+            // const restringer = new REstringer('"RE" + "stringer"');
+            if (restringer.deobfuscate()) {
+                console.log(restringer.script);
+            } else {
+                console.log('Nothing was deobfuscated :/');
+            }
+            document.getElementById('output').value = restringer.script;
+        });
+    </script>
+</body>
+</html>

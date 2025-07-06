@@ -1,47 +1,32 @@
-import pkg from 'isolated-vm';
-const {Isolate, Reference} = pkg;
-
 export class Sandbox {
 	constructor() {
-		// Objects that shouldn't be available when running scripts in eval to avoid security issues or inconsistencies.
-		const replacedItems = {
-			debugger: undefined,
-			WebAssembly: undefined,
-			fetch: undefined,
-			XMLHttpRequest: undefined,
-			WebSocket: undefined,
-		};
-		this.replacedItems = replacedItems;
-		this.replacedItemsNames = Object.keys(replacedItems);
-		this.timeout = 1.0 * 1000;
-
-		this.vm = new Isolate({memoryLimit: 128});
-		this.context = this.vm.createContextSync();
-
-		this.context.global.setSync('global', this.context.global.derefInto());
-
-		for (let i = 0; i < this.replacedItemsNames.length; i++) {
-			const itemName = this.replacedItemsNames[i];
-			this.context.global.setSync(itemName, this.replacedItems[itemName]);
-		}
+		// ...
 	}
 
 	/**
-	 * Run code in an isolated VM
+	 * Run code.
 	 * @param code
-	 * @return {Reference}
+	 * @return {*}
 	 */
 	run(code) {
-		// Delete some properties that add randomness to the result
-		const script = this.vm.compileScriptSync('delete Math.random; delete Date;\n\n' + code);
-		// const script = this.vm.compileScriptSync(code);
-		return script.runSync(this.context, {
-			timeout: this.timeout,
-			reference: true,
-		});
+		console.log('Running code eval:', code);
+		// TODO: Create sandbox iframe and run code inside it to isolate it
+		try {
+			return (function() {
+				'use strict';
+				const geval = eval;
+				const result = geval(code);
+				console.log('Eval result:', result);
+				return result;
+			})();
+		} catch (e) {
+			console.error('Error during eval:', e);
+			return undefined;
+		}
 	}
 
 	isReference(obj) {
-		return Object.getPrototypeOf(obj) === Reference.prototype;
+		// Leftover from isolated-vm. False if run errored instead of returning a real value?
+		return obj != null;
 	}
 }
