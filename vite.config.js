@@ -35,11 +35,13 @@ export default defineConfig(async () => {
 			lib: {
 				entry: resolve(__dirname, 'index.js'),
 				name: 'restringer',
-				fileName: (format) => `restringer.${format}.js`,
+				fileName: () => `restringer.js`,
 				formats: ['es'],
 			},
 			rollupOptions: {
-				// external: ['flast', 'obfuscation-detector'],
+				output: {
+					inlineDynamicImports: true,
+				},
 			},
 		},
 	};

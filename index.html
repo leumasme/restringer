@@ -12,7 +12,7 @@
     <br>
     <textarea id="output" rows="10" cols="80" readonly></textarea>
     <script type="module">
-        import { REstringer } from './dist/restringer.es.js';
+        import { REstringer } from './dist/restringer.js';
         document.getElementById('deobfuscate').addEventListener('click', () => {
             const input = document.getElementById('input').value;
             const restringer = new REstringer(input);
