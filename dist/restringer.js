@@ -4521,14 +4521,14 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
           var tt = this.startNodeAt(I, H);
           tt.object = x, nt ? (tt.property = this.parseExpression(), this.expect(k.bracketR)) : this.type === k.privateId && x.type !== "Super" ? tt.property = this.parsePrivateIdent() : tt.property = this.parseIdent(this.options.allowReserved !== "never"), tt.computed = !!nt, We && (tt.optional = He), x = this.finishNode(tt, "MemberExpression");
         } else if (!ne && this.eat(k.parenL)) {
-          var _t = new De(), Et = this.yieldPos, kt = this.awaitPos, Ct = this.awaitIdentPos;
+          var _t = new De(), Et = this.yieldPos, Ft = this.awaitPos, Ct = this.awaitIdentPos;
           this.yieldPos = 0, this.awaitPos = 0, this.awaitIdentPos = 0;
-          var qt = this.parseExprList(k.parenR, this.options.ecmaVersion >= 8, !1, _t);
+          var Nt = this.parseExprList(k.parenR, this.options.ecmaVersion >= 8, !1, _t);
           if (ce && !He && this.shouldParseAsyncArrow())
-            return this.checkPatternErrors(_t, !1), this.checkYieldAwaitInDefaultParams(), this.awaitIdentPos > 0 && this.raise(this.awaitIdentPos, "Cannot use 'await' as identifier inside an async function"), this.yieldPos = Et, this.awaitPos = kt, this.awaitIdentPos = Ct, this.parseSubscriptAsyncArrow(I, H, qt, qe);
-          this.checkExpressionErrors(_t, !0), this.yieldPos = Et || this.yieldPos, this.awaitPos = kt || this.awaitPos, this.awaitIdentPos = Ct || this.awaitIdentPos;
+            return this.checkPatternErrors(_t, !1), this.checkYieldAwaitInDefaultParams(), this.awaitIdentPos > 0 && this.raise(this.awaitIdentPos, "Cannot use 'await' as identifier inside an async function"), this.yieldPos = Et, this.awaitPos = Ft, this.awaitIdentPos = Ct, this.parseSubscriptAsyncArrow(I, H, Nt, qe);
+          this.checkExpressionErrors(_t, !0), this.yieldPos = Et || this.yieldPos, this.awaitPos = Ft || this.awaitPos, this.awaitIdentPos = Ct || this.awaitIdentPos;
           var Dt = this.startNodeAt(I, H);
-          Dt.callee = x, Dt.arguments = qt, We && (Dt.optional = He), x = this.finishNode(Dt, "CallExpression");
+          Dt.callee = x, Dt.arguments = Nt, We && (Dt.optional = He), x = this.finishNode(Dt, "CallExpression");
         } else if (this.type === k.backQuote) {
           (He || Ee) && this.raise(this.start, "Optional chaining cannot appear in the tag of tagged template expressions");
           var Bt = this.startNodeAt(I, H);
@@ -4620,7 +4620,7 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         var H = this.start, ne = this.startLoc, ce, Ee = this.options.ecmaVersion >= 8;
         if (this.options.ecmaVersion >= 6) {
           this.next();
-          var qe = this.start, We = this.startLoc, He = [], nt = !0, tt = !1, _t = new De(), Et = this.yieldPos, kt = this.awaitPos, Ct;
+          var qe = this.start, We = this.startLoc, He = [], nt = !0, tt = !1, _t = new De(), Et = this.yieldPos, Ft = this.awaitPos, Ct;
           for (this.yieldPos = 0, this.awaitPos = 0; this.type !== k.parenR; )
             if (nt ? nt = !1 : this.expect(k.comma), Ee && this.afterTrailingComma(k.parenR, !0)) {
               tt = !0;
@@ -4633,10 +4633,10 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
               break;
             } else
               He.push(this.parseMaybeAssign(!1, _t, this.parseParenItem));
-          var qt = this.lastTokEnd, Dt = this.lastTokEndLoc;
+          var Nt = this.lastTokEnd, Dt = this.lastTokEndLoc;
           if (this.expect(k.parenR), x && this.shouldParseArrow(He) && this.eat(k.arrow))
-            return this.checkPatternErrors(_t, !1), this.checkYieldAwaitInDefaultParams(), this.yieldPos = Et, this.awaitPos = kt, this.parseParenArrowList(H, ne, He, I);
-          (!He.length || tt) && this.unexpected(this.lastTokStart), Ct && this.unexpected(Ct), this.checkExpressionErrors(_t, !0), this.yieldPos = Et || this.yieldPos, this.awaitPos = kt || this.awaitPos, He.length > 1 ? (ce = this.startNodeAt(qe, We), ce.expressions = He, this.finishNodeAt(ce, "SequenceExpression", qt, Dt)) : ce = He[0];
+            return this.checkPatternErrors(_t, !1), this.checkYieldAwaitInDefaultParams(), this.yieldPos = Et, this.awaitPos = Ft, this.parseParenArrowList(H, ne, He, I);
+          (!He.length || tt) && this.unexpected(this.lastTokStart), Ct && this.unexpected(Ct), this.checkExpressionErrors(_t, !0), this.yieldPos = Et || this.yieldPos, this.awaitPos = Ft || this.awaitPos, He.length > 1 ? (ce = this.startNodeAt(qe, We), ce.expressions = He, this.finishNodeAt(ce, "SequenceExpression", Nt, Dt)) : ce = He[0];
         } else
           ce = this.parseParenExpression();
         if (this.options.preserveParens) {
@@ -5156,11 +5156,11 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         }
         return !1;
       }, ze.regexp_eatModifiers = function(x) {
-        for (var I = "", H = 0; (H = x.current()) !== -1 && Rt(H); )
+        for (var I = "", H = 0; (H = x.current()) !== -1 && kt(H); )
           I += t(H), x.advance();
         return I;
       };
-      function Rt(x) {
+      function kt(x) {
         return x === 105 || x === 109 || x === 115;
       }
       ze.regexp_eatExtendedAtom = function(x) {
@@ -5223,16 +5223,16 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         return !1;
       }, ze.regexp_eatRegExpIdentifierStart = function(x) {
         var I = x.pos, H = this.options.ecmaVersion >= 11, ne = x.current(H);
-        return x.advance(H), ne === 92 && this.regexp_eatRegExpUnicodeEscapeSequence(x, H) && (ne = x.lastIntValue), zt(ne) ? (x.lastIntValue = ne, !0) : (x.pos = I, !1);
+        return x.advance(H), ne === 92 && this.regexp_eatRegExpUnicodeEscapeSequence(x, H) && (ne = x.lastIntValue), Wt(ne) ? (x.lastIntValue = ne, !0) : (x.pos = I, !1);
       };
-      function zt(x) {
+      function Wt(x) {
         return C(x, !0) || x === 36 || x === 95;
       }
       ze.regexp_eatRegExpIdentifierPart = function(x) {
         var I = x.pos, H = this.options.ecmaVersion >= 11, ne = x.current(H);
-        return x.advance(H), ne === 92 && this.regexp_eatRegExpUnicodeEscapeSequence(x, H) && (ne = x.lastIntValue), Wt(ne) ? (x.lastIntValue = ne, !0) : (x.pos = I, !1);
+        return x.advance(H), ne === 92 && this.regexp_eatRegExpUnicodeEscapeSequence(x, H) && (ne = x.lastIntValue), Ht(ne) ? (x.lastIntValue = ne, !0) : (x.pos = I, !1);
       };
-      function Wt(x) {
+      function Ht(x) {
         return D(x, !0) || x === 36 || x === 95 || x === 8204 || x === 8205;
       }
       ze.regexp_eatAtomEscape = function(x) {
@@ -5272,15 +5272,15 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         }
         return !1;
       }, ze.regexp_eatZero = function(x) {
-        return x.current() === 48 && !Ft(x.lookahead()) ? (x.lastIntValue = 0, x.advance(), !0) : !1;
+        return x.current() === 48 && !It(x.lookahead()) ? (x.lastIntValue = 0, x.advance(), !0) : !1;
       }, ze.regexp_eatControlEscape = function(x) {
         var I = x.current();
         return I === 116 ? (x.lastIntValue = 9, x.advance(), !0) : I === 110 ? (x.lastIntValue = 10, x.advance(), !0) : I === 118 ? (x.lastIntValue = 11, x.advance(), !0) : I === 102 ? (x.lastIntValue = 12, x.advance(), !0) : I === 114 ? (x.lastIntValue = 13, x.advance(), !0) : !1;
       }, ze.regexp_eatControlLetter = function(x) {
         var I = x.current();
-        return Nt(I) ? (x.lastIntValue = I % 32, x.advance(), !0) : !1;
+        return Pt(I) ? (x.lastIntValue = I % 32, x.advance(), !0) : !1;
       };
-      function Nt(x) {
+      function Pt(x) {
         return x >= 65 && x <= 90 || x >= 97 && x <= 122;
       }
       ze.regexp_eatRegExpUnicodeEscapeSequence = function(x, I) {
@@ -5315,13 +5315,13 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
           ) && this.regexp_eatHexDigits(x) && x.eat(
             125
             /* } */
-          ) && Ht(x.lastIntValue))
+          ) && Kt(x.lastIntValue))
             return !0;
           ne && x.raise("Invalid unicode escape"), x.pos = H;
         }
         return !1;
       };
-      function Ht(x) {
+      function Kt(x) {
         return x >= 0 && x <= 1114111;
       }
       ze.regexp_eatIdentityEscape = function(x) {
@@ -5343,10 +5343,10 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         }
         return !1;
       };
-      var Pt = 0, Mt = 1, St = 2;
+      var Tt = 0, Mt = 1, St = 2;
       ze.regexp_eatCharacterClassEscape = function(x) {
         var I = x.current();
-        if (Kt(I))
+        if (Gt(I))
           return x.lastIntValue = -1, x.advance(), Mt;
         var H = !1;
         if (x.switchU && this.options.ecmaVersion >= 9 && ((H = I === 80) || I === 112)) {
@@ -5362,9 +5362,9 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
             return H && ne === St && x.raise("Invalid property name"), ne;
           x.raise("Invalid property name");
         }
-        return Pt;
+        return Tt;
       };
-      function Kt(x) {
+      function Gt(x) {
         return x === 100 || x === 68 || x === 115 || x === 83 || x === 119 || x === 87;
       }
       ze.regexp_eatUnicodePropertyValueExpression = function(x) {
@@ -5383,7 +5383,7 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
           var ce = x.lastStringValue;
           return this.regexp_validateUnicodePropertyNameOrValue(x, ce);
         }
-        return Pt;
+        return Tt;
       }, ze.regexp_validateUnicodePropertyNameAndValue = function(x, I, H) {
         l(x.unicodeProperties.nonBinary, I) || x.raise("Invalid property name"), x.unicodeProperties.nonBinary[I].test(H) || x.raise("Invalid property value");
       }, ze.regexp_validateUnicodePropertyNameOrValue = function(x, I) {
@@ -5394,21 +5394,21 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         x.raise("Invalid property name");
       }, ze.regexp_eatUnicodePropertyName = function(x) {
         var I = 0;
-        for (x.lastStringValue = ""; Tt(I = x.current()); )
+        for (x.lastStringValue = ""; $t(I = x.current()); )
           x.lastStringValue += t(I), x.advance();
         return x.lastStringValue !== "";
       };
-      function Tt(x) {
-        return Nt(x) || x === 95;
+      function $t(x) {
+        return Pt(x) || x === 95;
       }
       ze.regexp_eatUnicodePropertyValue = function(x) {
         var I = 0;
-        for (x.lastStringValue = ""; Gt(I = x.current()); )
+        for (x.lastStringValue = ""; Zt(I = x.current()); )
           x.lastStringValue += t(I), x.advance();
         return x.lastStringValue !== "";
       };
-      function Gt(x) {
-        return Tt(x) || Ft(x);
+      function Zt(x) {
+        return $t(x) || It(x);
       }
       ze.regexp_eatLoneUnicodePropertyNameOrValue = function(x) {
         return this.regexp_eatUnicodePropertyValue(x);
@@ -5450,7 +5450,7 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
             return !0;
           if (x.switchU) {
             var H = x.current();
-            (H === 99 || Lt(H)) && x.raise("Invalid class escape"), x.raise("Invalid escape");
+            (H === 99 || Vt(H)) && x.raise("Invalid class escape"), x.raise("Invalid escape");
           }
           x.pos = I;
         }
@@ -5594,24 +5594,24 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
             /* b */
           ) ? (x.lastIntValue = 8, !0) : (x.pos = I, !1);
         var H = x.current();
-        return H < 0 || H === x.lookahead() && Zt(H) || Xt(H) ? !1 : (x.advance(), x.lastIntValue = H, !0);
+        return H < 0 || H === x.lookahead() && Xt(H) || Jt(H) ? !1 : (x.advance(), x.lastIntValue = H, !0);
       };
-      function Zt(x) {
+      function Xt(x) {
         return x === 33 || x >= 35 && x <= 38 || x >= 42 && x <= 44 || x === 46 || x >= 58 && x <= 64 || x === 94 || x === 96 || x === 126;
       }
-      function Xt(x) {
+      function Jt(x) {
         return x === 40 || x === 41 || x === 45 || x === 47 || x >= 91 && x <= 93 || x >= 123 && x <= 125;
       }
       ze.regexp_eatClassSetReservedPunctuator = function(x) {
         var I = x.current();
-        return Jt(I) ? (x.lastIntValue = I, x.advance(), !0) : !1;
+        return Yt(I) ? (x.lastIntValue = I, x.advance(), !0) : !1;
       };
-      function Jt(x) {
+      function Yt(x) {
         return x === 33 || x === 35 || x === 37 || x === 38 || x === 44 || x === 45 || x >= 58 && x <= 62 || x === 64 || x === 96 || x === 126;
       }
       ze.regexp_eatClassControlLetter = function(x) {
         var I = x.current();
-        return Ft(I) || I === 95 ? (x.lastIntValue = I % 32, x.advance(), !0) : !1;
+        return It(I) || I === 95 ? (x.lastIntValue = I % 32, x.advance(), !0) : !1;
       }, ze.regexp_eatHexEscapeSequence = function(x) {
         var I = x.pos;
         if (x.eat(
@@ -5625,23 +5625,23 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         return !1;
       }, ze.regexp_eatDecimalDigits = function(x) {
         var I = x.pos, H = 0;
-        for (x.lastIntValue = 0; Ft(H = x.current()); )
+        for (x.lastIntValue = 0; It(H = x.current()); )
           x.lastIntValue = 10 * x.lastIntValue + (H - 48), x.advance();
         return x.pos !== I;
       };
-      function Ft(x) {
+      function It(x) {
         return x >= 48 && x <= 57;
       }
       ze.regexp_eatHexDigits = function(x) {
         var I = x.pos, H = 0;
-        for (x.lastIntValue = 0; $t(H = x.current()); )
-          x.lastIntValue = 16 * x.lastIntValue + Ot(H), x.advance();
+        for (x.lastIntValue = 0; Ot(H = x.current()); )
+          x.lastIntValue = 16 * x.lastIntValue + Lt(H), x.advance();
         return x.pos !== I;
       };
-      function $t(x) {
+      function Ot(x) {
         return x >= 48 && x <= 57 || x >= 65 && x <= 70 || x >= 97 && x <= 102;
       }
-      function Ot(x) {
+      function Lt(x) {
         return x >= 65 && x <= 70 ? 10 + (x - 65) : x >= 97 && x <= 102 ? 10 + (x - 97) : x - 48;
       }
       ze.regexp_eatLegacyOctalEscapeSequence = function(x) {
@@ -5657,9 +5657,9 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         return !1;
       }, ze.regexp_eatOctalDigit = function(x) {
         var I = x.current();
-        return Lt(I) ? (x.lastIntValue = I - 48, x.advance(), !0) : (x.lastIntValue = 0, !1);
+        return Vt(I) ? (x.lastIntValue = I - 48, x.advance(), !0) : (x.lastIntValue = 0, !1);
       };
-      function Lt(x) {
+      function Vt(x) {
         return x >= 48 && x <= 55;
       }
       ze.regexp_eatFixedHexDigits = function(x, I) {
@@ -5667,19 +5667,19 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         x.lastIntValue = 0;
         for (var ne = 0; ne < I; ++ne) {
           var ce = x.current();
-          if (!$t(ce))
+          if (!Ot(ce))
             return x.pos = H, !1;
-          x.lastIntValue = 16 * x.lastIntValue + Ot(ce), x.advance();
+          x.lastIntValue = 16 * x.lastIntValue + Lt(ce), x.advance();
         }
         return !0;
       };
-      var It = function(I) {
+      var qt = function(I) {
         this.type = I.type, this.value = I.value, this.start = I.start, this.end = I.end, I.options.locations && (this.loc = new T(I, I.startLoc, I.endLoc)), I.options.ranges && (this.range = [I.start, I.end]);
       }, st = Le.prototype;
       st.next = function(x) {
-        !x && this.type.keyword && this.containsEsc && this.raiseRecoverable(this.start, "Escape sequence in keyword " + this.type.keyword), this.options.onToken && this.options.onToken(new It(this)), this.lastTokEnd = this.end, this.lastTokStart = this.start, this.lastTokEndLoc = this.endLoc, this.lastTokStartLoc = this.startLoc, this.nextToken();
+        !x && this.type.keyword && this.containsEsc && this.raiseRecoverable(this.start, "Escape sequence in keyword " + this.type.keyword), this.options.onToken && this.options.onToken(new qt(this)), this.lastTokEnd = this.end, this.lastTokStart = this.start, this.lastTokEndLoc = this.endLoc, this.lastTokStartLoc = this.startLoc, this.nextToken();
       }, st.getToken = function() {
-        return this.next(), new It(this);
+        return this.next(), new qt(this);
       }, typeof Symbol < "u" && (st[Symbol.iterator] = function() {
         var x = this;
         return {
@@ -5958,17 +5958,17 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         }
         return ne && We === 95 && this.raiseRecoverable(this.pos - 1, "Numeric separator is not allowed at the last of digits"), this.pos === Ee || I != null && this.pos - Ee !== I ? null : qe;
       };
-      function Yt(x, I) {
+      function Qt(x, I) {
         return I ? parseInt(x, 8) : parseFloat(x.replace(/_/g, ""));
       }
-      function Vt(x) {
+      function jt(x) {
         return typeof BigInt != "function" ? null : BigInt(x.replace(/_/g, ""));
       }
       st.readRadixNumber = function(x) {
         var I = this.pos;
         this.pos += 2;
         var H = this.readInt(x);
-        return H == null && this.raise(this.start + 2, "Expected number in radix " + x), this.options.ecmaVersion >= 11 && this.input.charCodeAt(this.pos) === 110 ? (H = Vt(this.input.slice(I, this.pos)), ++this.pos) : C(this.fullCharCodeAtPos()) && this.raise(this.pos, "Identifier directly after number"), this.finishToken(k.num, H);
+        return H == null && this.raise(this.start + 2, "Expected number in radix " + x), this.options.ecmaVersion >= 11 && this.input.charCodeAt(this.pos) === 110 ? (H = jt(this.input.slice(I, this.pos)), ++this.pos) : C(this.fullCharCodeAtPos()) && this.raise(this.pos, "Identifier directly after number"), this.finishToken(k.num, H);
       }, st.readNumber = function(x) {
         var I = this.pos;
         !x && this.readInt(10, void 0, !0) === null && this.raise(I, "Invalid number");
@@ -5976,11 +5976,11 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         H && this.strict && this.raise(I, "Invalid number");
         var ne = this.input.charCodeAt(this.pos);
         if (!H && !x && this.options.ecmaVersion >= 11 && ne === 110) {
-          var ce = Vt(this.input.slice(I, this.pos));
+          var ce = jt(this.input.slice(I, this.pos));
           return ++this.pos, C(this.fullCharCodeAtPos()) && this.raise(this.pos, "Identifier directly after number"), this.finishToken(k.num, ce);
         }
         H && /[89]/.test(this.input.slice(I, this.pos)) && (H = !1), ne === 46 && !H && (++this.pos, this.readInt(10), ne = this.input.charCodeAt(this.pos)), (ne === 69 || ne === 101) && !H && (ne = this.input.charCodeAt(++this.pos), (ne === 43 || ne === 45) && ++this.pos, this.readInt(10) === null && this.raise(I, "Invalid number")), C(this.fullCharCodeAtPos()) && this.raise(this.pos, "Identifier directly after number");
-        var Ee = Yt(this.input.slice(I, this.pos), H);
+        var Ee = Qt(this.input.slice(I, this.pos), H);
         return this.finishToken(k.num, Ee);
       }, st.readCodePoint = function() {
         var x = this.input.charCodeAt(this.pos), I;
@@ -6001,13 +6001,13 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         }
         return I += this.input.slice(H, this.pos++), this.finishToken(k.string, I);
       };
-      var jt = {};
+      var Ut = {};
       st.tryReadTemplateToken = function() {
         this.inTemplateElement = !0;
         try {
           this.readTmplToken();
         } catch (x) {
-          if (x === jt)
+          if (x === Ut)
             this.readInvalidTemplateToken();
           else
             throw x;
@@ -6015,7 +6015,7 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         this.inTemplateElement = !1;
       }, st.invalidStringToken = function(x, I) {
         if (this.inTemplateElement && this.options.ecmaVersion >= 9)
-          throw jt;
+          throw Ut;
         this.raise(x, I);
       }, st.readTmplToken = function() {
         for (var x = "", I = this.pos; ; ) {
@@ -6144,10 +6144,10 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         var x = this.readWord1(), I = k.name;
         return this.keywords.test(x) && (I = N[x]), this.finishToken(I, x);
       };
-      var Ut = "8.14.0";
+      var zt = "8.14.0";
       Le.acorn = {
         Parser: Le,
-        version: Ut,
+        version: zt,
         defaultOptions: re,
         Position: B,
         SourceLocation: T,
@@ -6160,22 +6160,22 @@ Defaulting to 2020, but this will stop working in the future.`)), I.ecmaVersion 
         tokContexts: Se,
         isIdentifierChar: D,
         isIdentifierStart: C,
-        Token: It,
+        Token: qt,
         isNewLine: ee,
         lineBreak: G,
         lineBreakG: J,
         nonASCIIwhitespace: M
       };
-      function Qt(x, I) {
+      function er(x, I) {
         return Le.parse(x, I);
       }
-      function er(x, I, H) {
+      function tr(x, I, H) {
         return Le.parseExpressionAt(x, I, H);
       }
-      function tr(x, I) {
+      function rr(x, I) {
         return Le.tokenizer(x, I);
       }
-      h.Node = pe, h.Parser = Le, h.Position = B, h.SourceLocation = T, h.TokContext = Ze, h.Token = It, h.TokenType = R, h.defaultOptions = re, h.getLineInfo = W, h.isIdentifierChar = D, h.isIdentifierStart = C, h.isNewLine = ee, h.keywordTypes = N, h.lineBreak = G, h.lineBreakG = J, h.nonASCIIwhitespace = M, h.parse = Qt, h.parseExpressionAt = er, h.tokContexts = Se, h.tokTypes = k, h.tokenizer = tr, h.version = Ut;
+      h.Node = pe, h.Parser = Le, h.Position = B, h.SourceLocation = T, h.TokContext = Ze, h.Token = qt, h.TokenType = R, h.defaultOptions = re, h.getLineInfo = W, h.isIdentifierChar = D, h.isIdentifierStart = C, h.isNewLine = ee, h.keywordTypes = N, h.lineBreak = G, h.lineBreakG = J, h.nonASCIIwhitespace = M, h.parse = er, h.parseExpressionAt = tr, h.tokContexts = Se, h.tokTypes = k, h.tokenizer = rr, h.version = zt;
     });
   }(acorn$1, acorn$1.exports)), acorn$1.exports;
 }
@@ -7466,7 +7466,7 @@ function requireEstraverse$2() {
 }
 var estraverseExports = requireEstraverse$2();
 const estraverse$2 = /* @__PURE__ */ getDefaultExportFromCjs(estraverseExports), READ = 1, WRITE = 2, RW = READ | WRITE;
-class Reference {
+let Reference$1 = class Rt {
   constructor(o, h, u, d, a, y, v) {
     this.identifier = o, this.from = h, this.tainted = !1, this.resolved = null, this.flag = u, this.isWrite() && (this.writeExpr = d, this.partial = y, this.init = v), this.__maybeImplicitGlobal = a;
   }
@@ -7484,7 +7484,7 @@ class Reference {
    * @returns {boolean} write
    */
   isWrite() {
-    return !!(this.flag & Reference.WRITE);
+    return !!(this.flag & Rt.WRITE);
   }
   /**
    * Whether the reference is readable.
@@ -7492,7 +7492,7 @@ class Reference {
    * @returns {boolean} read
    */
   isRead() {
-    return !!(this.flag & Reference.READ);
+    return !!(this.flag & Rt.READ);
   }
   /**
    * Whether the reference is read-only.
@@ -7500,7 +7500,7 @@ class Reference {
    * @returns {boolean} read only
    */
   isReadOnly() {
-    return this.flag === Reference.READ;
+    return this.flag === Rt.READ;
   }
   /**
    * Whether the reference is write-only.
@@ -7508,7 +7508,7 @@ class Reference {
    * @returns {boolean} write only
    */
   isWriteOnly() {
-    return this.flag === Reference.WRITE;
+    return this.flag === Rt.WRITE;
   }
   /**
    * Whether the reference is read-write.
@@ -7516,12 +7516,12 @@ class Reference {
    * @returns {boolean} read write
    */
   isReadWrite() {
-    return this.flag === Reference.RW;
+    return this.flag === Rt.RW;
   }
-}
-Reference.READ = READ;
-Reference.WRITE = WRITE;
-Reference.RW = RW;
+};
+Reference$1.READ = READ;
+Reference$1.WRITE = WRITE;
+Reference$1.RW = RW;
 class Variable {
   constructor(o, h) {
     this.name = o, this.identifiers = [], this.references = [], this.defs = [], this.tainted = !1, this.stack = !0, this.scope = h;
@@ -7647,7 +7647,7 @@ class Scope {
   __referencing(o, h, u, d, a, y) {
     if (!o || o.type !== Syntax$2.Identifier || o.name === "super")
       return;
-    const v = new Reference(o, this, h || Reference.READ, u, d, !!a, !!y);
+    const v = new Reference$1(o, this, h || Reference$1.READ, u, d, !!a, !!y);
     this.references.push(v), this.__left.push(v);
   }
   __detectEval() {
@@ -8553,7 +8553,7 @@ class Referencer extends esrecurse.Visitor {
     h.forEach((y) => {
       a.__referencing(
         o,
-        Reference.WRITE,
+        Reference$1.WRITE,
         y.right,
         u,
         o !== y.left,
@@ -8640,13 +8640,13 @@ class Referencer extends esrecurse.Visitor {
   }
   visitForIn(o) {
     o.left.type === Syntax.VariableDeclaration && o.left.kind !== "var" && this.scopeManager.__nestForScope(o), o.left.type === Syntax.VariableDeclaration ? (this.visit(o.left), this.visitPattern(o.left.declarations[0].id, (h) => {
-      this.currentScope().__referencing(h, Reference.WRITE, o.right, null, !0, !0);
+      this.currentScope().__referencing(h, Reference$1.WRITE, o.right, null, !0, !0);
     })) : this.visitPattern(o.left, { processRightHandNodes: !0 }, (h, u) => {
       let d = null;
       this.currentScope().isStrict || (d = {
         pattern: h,
         node: o
-      }), this.referencingDefaultValue(h, u.assignments, d, !1), this.currentScope().__referencing(h, Reference.WRITE, o.right, d, !0, !1);
+      }), this.referencingDefaultValue(h, u.assignments, d, !1), this.currentScope().__referencing(h, Reference$1.WRITE, o.right, d, !0, !1);
     }), this.visit(o.right), this.visit(o.body), this.close(o);
   }
   visitVariableDeclaration(o, h, u, d) {
@@ -8662,7 +8662,7 @@ class Referencer extends esrecurse.Visitor {
           d,
           u.kind
         )
-      ), this.referencingDefaultValue(v, w.assignments, null, !0), y && this.currentScope().__referencing(v, Reference.WRITE, y, null, !w.topLevel, !0);
+      ), this.referencingDefaultValue(v, w.assignments, null, !0), y && this.currentScope().__referencing(v, Reference$1.WRITE, y, null, !w.topLevel, !0);
     });
   }
   AssignmentExpression(o) {
@@ -8671,8 +8671,8 @@ class Referencer extends esrecurse.Visitor {
       this.currentScope().isStrict || (d = {
         pattern: h,
         node: o
-      }), this.referencingDefaultValue(h, u.assignments, d, !1), this.currentScope().__referencing(h, Reference.WRITE, o.right, d, !u.topLevel, !1);
-    }) : this.currentScope().__referencing(o.left, Reference.RW, o.right) : this.visit(o.left), this.visit(o.right);
+      }), this.referencingDefaultValue(h, u.assignments, d, !1), this.currentScope().__referencing(h, Reference$1.WRITE, o.right, d, !u.topLevel, !1);
+    }) : this.currentScope().__referencing(o.left, Reference$1.RW, o.right) : this.visit(o.left), this.visit(o.right);
   }
   CatchClause(o) {
     this.scopeManager.__nestCatchScope(o), this.visitPattern(o.param, { processRightHandNodes: !0 }, (h, u) => {
@@ -8699,7 +8699,7 @@ class Referencer extends esrecurse.Visitor {
   PrivateIdentifier() {
   }
   UpdateExpression(o) {
-    PatternVisitor.isPattern(o.argument) ? this.currentScope().__referencing(o.argument, Reference.RW, null) : this.visitChildren(o);
+    PatternVisitor.isPattern(o.argument) ? this.currentScope().__referencing(o.argument, Reference$1.RW, null) : this.visitChildren(o);
   }
   MemberExpression(o) {
     this.visit(o.object), o.computed && this.visit(o.property);
@@ -23106,10 +23106,10 @@ function requireBn$4() {
         t = (T + (B >>> 13) | 0) + (at >>> 26) | 0, at &= 67108863, p = Math.imul(it, Je), B = Math.imul(it, Fe), B = B + Math.imul(Be, Je) | 0, T = Math.imul(Be, Fe), p = p + Math.imul(rt, Xe) | 0, B = B + Math.imul(rt, Ne) | 0, B = B + Math.imul(De, Xe) | 0, T = T + Math.imul(De, Ne) | 0, p = p + Math.imul(Le, Qe) | 0, B = B + Math.imul(Le, et) | 0, B = B + Math.imul(ye, Qe) | 0, T = T + Math.imul(ye, et) | 0;
         var wt = (t + p | 0) + ((B & 8191) << 13) | 0;
         t = (T + (B >>> 13) | 0) + (wt >>> 26) | 0, wt &= 67108863, p = Math.imul(it, Xe), B = Math.imul(it, Ne), B = B + Math.imul(Be, Xe) | 0, T = Math.imul(Be, Ne), p = p + Math.imul(rt, Qe) | 0, B = B + Math.imul(rt, et) | 0, B = B + Math.imul(De, Qe) | 0, T = T + Math.imul(De, et) | 0;
-        var Rt = (t + p | 0) + ((B & 8191) << 13) | 0;
-        t = (T + (B >>> 13) | 0) + (Rt >>> 26) | 0, Rt &= 67108863, p = Math.imul(it, Qe), B = Math.imul(it, et), B = B + Math.imul(Be, Qe) | 0, T = Math.imul(Be, et);
+        var kt = (t + p | 0) + ((B & 8191) << 13) | 0;
+        t = (T + (B >>> 13) | 0) + (kt >>> 26) | 0, kt &= 67108863, p = Math.imul(it, Qe), B = Math.imul(it, et), B = B + Math.imul(Be, Qe) | 0, T = Math.imul(Be, et);
         var At = (t + p | 0) + ((B & 8191) << 13) | 0;
-        return t = (T + (B >>> 13) | 0) + (At >>> 26) | 0, At &= 67108863, c[0] = ft, c[1] = ht, c[2] = lt, c[3] = ct, c[4] = dt, c[5] = pt, c[6] = yt, c[7] = gt, c[8] = vt, c[9] = bt, c[10] = ut, c[11] = mt, c[12] = xt, c[13] = ze, c[14] = ot, c[15] = at, c[16] = wt, c[17] = Rt, c[18] = At, t !== 0 && (c[19] = t, l.length++), l;
+        return t = (T + (B >>> 13) | 0) + (At >>> 26) | 0, At &= 67108863, c[0] = ft, c[1] = ht, c[2] = lt, c[3] = ct, c[4] = dt, c[5] = pt, c[6] = yt, c[7] = gt, c[8] = vt, c[9] = bt, c[10] = ut, c[11] = mt, c[12] = xt, c[13] = ze, c[14] = ot, c[15] = at, c[16] = wt, c[17] = kt, c[18] = At, t !== 0 && (c[19] = t, l.length++), l;
       };
       Math.imul || (q = F);
       function O(n, s, f) {
@@ -34635,6 +34635,17 @@ const unwrapSimpleOperations$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ O
   unwrapIIFEs,
   unwrapSimpleOperations
 }, Symbol.toStringTag, { value: "Module" }));
+class Reference {
+  constructor(o) {
+    this.value = o;
+  }
+  copySync() {
+    return this.value;
+  }
+  [Symbol.toStringTag]() {
+    return this.value[Symbol.toStringTag]();
+  }
+}
 class Sandbox {
   constructor() {
   }
@@ -34649,7 +34660,7 @@ class Sandbox {
       return function() {
         "use strict";
         const u = (0, eval)(o);
-        return console.log("Eval result:", u), u;
+        return console.log("Eval result:", u), new Reference(u);
       }();
     } catch (h) {
       console.error("Error during eval:", h);
@@ -34657,7 +34668,7 @@ class Sandbox {
     }
   }
   isReference(o) {
-    return o != null;
+    return o instanceof Reference;
   }
 }
 const sandbox = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
@@ -34700,7 +34711,8 @@ function evalInVm$1(r, o) {
         const a = Object.keys(d).sort().join("");
         matchingObjectKeys[a] ? cache[h] = matchingObjectKeys[a] : cache[h] = createNewNode(d);
       }
-    } catch {
+    } catch (u) {
+      console.log(u);
     }
   }
   return cache[h];
@@ -35265,7 +35277,8 @@ function resolveLocalCalls$1(r, o = () => !0) {
         const C = new Sandbox();
         try {
           C.run(createOrderedSrc$2(getDeclarationWithContext$2(g.parentNode))), Object.keys(h) >= cacheLimit && h.flush(), h[b] = C;
-        } catch {
+        } catch (D) {
+          console.log(D);
         }
       }
     }

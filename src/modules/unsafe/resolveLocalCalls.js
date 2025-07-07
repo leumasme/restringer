@@ -90,7 +90,9 @@ export default function resolveLocalCalls(arb, candidateFilter = () => true) {
 					contextSb.run(createOrderedSrc(getDeclarationWithContext(declNode.parentNode)));
 					if (Object.keys(cache) >= cacheLimit) cache.flush();
 					cache[cacheName] = contextSb;
-				} catch {}
+				} catch (e) {
+                    console.log(e)
+                }
 			}
 		}
 		const contextVM = cache[cacheName];

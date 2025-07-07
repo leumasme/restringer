@@ -1,3 +1,16 @@
+class Reference {
+    constructor(value) {
+        this.value = value;
+    }
+
+    copySync() {
+        return this.value;
+    }
+    [Symbol.toStringTag]() {
+        return this.value[Symbol.toStringTag]();
+    }
+}
+
 export class Sandbox {
 	constructor() {
 		// ...
@@ -17,7 +30,8 @@ export class Sandbox {
 				const geval = eval;
 				const result = geval(code);
 				console.log('Eval result:', result);
-				return result;
+                // debugger;
+				return new Reference(result);
 			})();
 		} catch (e) {
 			console.error('Error during eval:', e);
@@ -27,6 +41,6 @@ export class Sandbox {
 
 	isReference(obj) {
 		// Leftover from isolated-vm. False if run errored instead of returning a real value?
-		return obj != null;
+		return obj instanceof Reference;
 	}
 }
