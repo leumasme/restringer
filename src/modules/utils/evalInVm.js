@@ -57,7 +57,9 @@ function evalInVm(stringToEval, sb) {
 				if (matchingObjectKeys[objKeys]) cache[cacheName] = matchingObjectKeys[objKeys];
 				else cache[cacheName] = createNewNode(res);
 			}
-		} catch {}
+		} catch (e) {
+            console.log(e);
+        }
 	}
 	return cache[cacheName];
 }
