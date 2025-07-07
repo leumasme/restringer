@@ -1,14 +1,14 @@
 class Reference {
-    constructor(value) {
-        this.value = value;
-    }
+	constructor(value) {
+		this.value = value;
+	}
 
-    copySync() {
-        return this.value;
-    }
-    [Symbol.toStringTag]() {
-        return this.value[Symbol.toStringTag]();
-    }
+	copySync() {
+		return this.value;
+	}
+	get [Symbol.toStringTag]() {
+		return this.value[Symbol.toStringTag];
+	}
 }
 
 export class Sandbox {
@@ -30,7 +30,6 @@ export class Sandbox {
 				const geval = eval;
 				const result = geval(code);
 				console.log('Eval result:', result);
-                // debugger;
 				return new Reference(result);
 			})();
 		} catch (e) {
