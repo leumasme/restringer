@@ -58,8 +58,8 @@ function evalInVm(stringToEval, sb) {
 				else cache[cacheName] = createNewNode(res);
 			}
 		} catch (e) {
-            console.log(e);
-        }
+			console.log(e);
+		}
 	}
 	return cache[cacheName];
 }

@@ -91,8 +91,8 @@ export default function resolveLocalCalls(arb, candidateFilter = () => true) {
 					if (Object.keys(cache) >= cacheLimit) cache.flush();
 					cache[cacheName] = contextSb;
 				} catch (e) {
-                    console.log(e)
-                }
+					console.log(e);
+				}
 			}
 		}
 		const contextVM = cache[cacheName];
